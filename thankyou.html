@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="text-align:center; padding-top:400px; background-color:#333; color:#fff; font-size: xx-large;">
+    <h1 id="thankyouMessage">Thank you!</h1>
+ 
+    <script>
+        const name = localStorage.getItem('customerName');
+        const message = document.getElementById('thankyouMessage');
+ 
+        if (name) {
+            message.textContent = `Thank you, ${name}. We received your submission!`;
+        } else {
+            message.textContent = "Thank you! We received your submission.";
+        }
+ 
+        localStorage.removeItem('customerName');
+    </script>
+</body>
+</html>
+ 
