@@ -287,11 +287,147 @@
   </div>
 
   <form name="carRental" id="carRental" method="post" onsubmit="return validateForm();">
-    <!-- keep all your existing form fields here (they’re fine) -->
+    <!-- Vehicle Rental Details -->
+    <fieldset id="rentalDetails">
+      <legend>Vehicle Rental Details</legend>
+      <p>
+        <label for="email">E-mail Address<span class="required">*</span></label>
+        <input type="text" name="email" id="email" onblur="validateEmail();" />
+      </p>
+      <p>
+        <label for="vehicleSelection">Vehicle Rental Selection <span class="required">*</span></label>
+        <select name="vehicleSelection" id="vehicleSelection" onblur="validateCarSelection()">
+          <option value="None" selected>Select One</option>
+          <option value="BMW">BMW</option>
+          <option value="Audi">Audi</option>
+          <option value="Mercedes">Mercedes Benz</option>
+          <option value="Chevrolet">Chevrolet</option>
+          <option value="Mazda">Mazda</option>
+          <option value="Toyota">Toyota</option>
+          <option value="Nissan">Nissan</option>
+          <option value="Ranger-Rover">Ranger Rover</option>
+          <option value="Land Rover">Land Rover</option>
+          <option value="Renault">Renault</option>
+          <option value="Cherokee">Cherokee</option>
+          <option value="Lexus">Lexus</option>
+          <option value="Ford">Ford</option>
+          <option value="VW">Volkswagen</option>
+          <option value="Honda">Honda</option>
+          <option value="Hyundai">Hyundai</option>
+        </select>
+      </p>
+      <p>
+        <label for="from">From (Start From City) <span class="required">*</span></label>
+        <input type="text" name="from" id="from" />
+      </p>
+      <p>
+        <label for="to">To (Destination City)<span class="required">*</span></label>
+        <input type="text" name="to" id="to" />
+      </p>
+      <p>
+        <label for="pickupDate">Date of Pickup <span class="required">*</span></label>
+        <select name="day" id="day">
+          <option value="None" selected>Select a day</option>
+          ${Array.from({length:31},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("")}
+        </select>
+        <select name="month" id="month">
+          <option value="None" selected>Select a month</option>
+          <option>January</option><option>February</option><option>March</option><option>April</option>
+          <option>May</option><option>June</option><option>July</option><option>August</option>
+          <option>September</option><option>October</option><option>November</option><option>December</option>
+        </select>
+        <select name="year" id="year">
+          <option value="None" selected>Select a year</option>
+          <option>2025</option><option>2026</option><option>2027</option><option>2028</option><option>2029</option>
+        </select>
+      </p>
+      <p>
+        <label for="returnDay">Date of Return <span class="required">*</span></label>
+        <select name="returnDay" id="returnDay">
+          <option value="None" selected>Select a day</option>
+          ${Array.from({length:31},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("")}
+        </select>
+        <select name="returnMonth" id="returnMonth">
+          <option value="None" selected>Select a month</option>
+          <option>January</option><option>February</option><option>March</option><option>April</option>
+          <option>May</option><option>June</option><option>July</option><option>August</option>
+          <option>September</option><option>October</option><option>November</option><option>December</option>
+        </select>
+        <select name="returnYear" id="returnYear">
+          <option value="None" selected>Select a year</option>
+          <option>2025</option><option>2026</option><option>2027</option><option>2028</option><option>2029</option>
+        </select>
+      </p>
+      <p>
+        <label for="returnTime">Return Time (HH:MM:SS)<span class="required">*</span></label>
+        <input type="text" name="returnTime" id="returnTime" />
+      </p>
+    </fieldset>
+
+    <!-- Driver Requirement -->
+    <fieldset id="driverRequired">
+      <legend>Driver Requirement</legend>
+      <p>Please indicate whether you require a driver by selecting one option below<span class="required">*</span></p>
+      <p>
+        <input type="radio" name="Yes" value="Yes" /> Yes Driver Required<br />
+        <input type="radio" name="Yes" value="No" /> No Driver Required<br />
+        <input type="radio" name="Yes" value="Insurance" /> Insurance<br />
+        <input type="radio" name="Yes" value="None" /> None<br />
+        <input type="radio" name="Yes" value="CDW" /> Collision Damage Waiver<br />
+        <input type="radio" name="Yes" value="LI" /> Liability Insurance<br />
+        <input type="radio" name="Yes" value="PAI" /> Personal Accident Insurance<br />
+        <input type="radio" name="Yes" value="PEC" /> Personal Effects Coverage
+      </p>
+    </fieldset>
+
+    <!-- Billing Info -->
+    <fieldset id="billingInfo">
+      <legend>Billing Information</legend>
+      <p><label for="fname">First Name <span class="required">*</span></label>
+        <input type="text" name="fname" id="fname" /></p>
+      <p><label for="mInitial">Middle Initial <span class="required">*</span></label>
+        <input type="text" name="mInitial" id="mInitial" maxlength="2" /></p>
+      <p><label for="lname">Last Name <span class="required">*</span></label>
+        <input type="text" name="lname" id="lname" /></p>
+      <p><label for="address">Address Line 1 <span class="required">*</span></label>
+        <input type="text" name="address" id="address" /></p>
+      <p><label for="city">City <span class="required">*</span></label>
+        <input type="text" name="city" id="city" /></p>
+      <p><label for="zip">Zip Code <span class="required">*</span></label>
+        <input type="text" name="zip" id="zip" /></p>
+      <p><label for="telephone">Telephone <span class="required">*</span></label>
+        <input type="text" name="telephone" id="telephone" maxlength="10" /></p>
+    </fieldset>
+
+    <!-- Credit/Debit Info -->
+    <fieldset id="cardInfo">
+      <legend>Credit/Debit Card Information</legend>
+      <p><label for="cardNumber">Card Number <span class="required">*</span></label>
+        <input type="text" name="cardNumber" id="cardNumber" /></p>
+      <p><label for="expiryMonth">Expiry Month <span class="required">*</span></label>
+        <select name="expiryMonth" id="expiryMonth">
+          <option value="None" selected>Select a month</option>
+          <option>January</option><option>February</option><option>March</option><option>April</option>
+          <option>May</option><option>June</option><option>July</option><option>August</option>
+          <option>September</option><option>October</option><option>November</option><option>December</option>
+        </select>
+      </p>
+      <p><label for="expiryYear">Expiry Year <span class="required">*</span></label>
+        <select name="expiryYear" id="expiryYear">
+          <option value="None" selected>Select a year</option>
+          <option>2025</option><option>2026</option><option>2027</option><option>2028</option><option>2029</option>
+        </select>
+      </p>
+      <p><label for="cardBrand">Card Brand <span class="required">*</span></label>
+        <input type="text" name="cardBrand" id="cardBrand" /></p>
+    </fieldset>
+
+    <p><input type="submit" name="submit" id="submit" value="Submit Form" /></p>
   </form>
 
   <div id="footer">
-    <p>Copyright &copy; 2025: <span>Selemani Car Rental Co.</span> - All Rights Reserved!</p>
+    <p>Copyright &copy; 2025:
+      <span>Selemani Car Rental Co.</span> - All Rights Reserved!</p>
   </div>
 </body>
 </html>
