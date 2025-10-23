@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selemani Car Rental</title>
+  <link rel="stylesheet" href="global.css" />
+
+  <script>
+    // LU10 - Form Validation
+
+    function validateForm() {
+      return (
+        validateEmail() &&
+        validateCarSelection() &&
+        validateStartCity() &&
+        validateDestinationCity() &&
+        validatePickupDay() &&
+        validatePickupMonth() &&
+        validatePickupYear() &&
+        validateReturnDay() &&
+        validateReturnMonth() &&
+        validateReturnYear() &&
+        validateReturnTime() &&
+        validateRadioButtons() &&
+        validateFirstName() &&
+        validateInitialMiddleName() &&
+        validateLastName() &&
+        validateAddress() &&
+        validateCity() &&
+        validateZipCode() &&
+        validateTelephone() &&
+        validateCardNumber() &&
+        validateExpiryMonth() &&
+        validateExpiryYear() &&
+        validateCardBrand()
+      );
+    }
+
+    // Validate Email
+    function validateEmail() {
+      const email = document.getElementById("email").value.trim();
+      const regex = /^[\w.-]+@([\w-]+\.)+[A-Za-z]{2,4}$/;
+      if (email === "") {
+        alert("Your email address is required!");
+        return false;
+      } else if (!regex.test(email)) {
+        alert("Invalid email address!");
+        return false;
+      }
+      return true;
+    }
+
+    // Validate Vehicle Selection
+    function validateCarSelection() {
+      const vehicle = document.getElementById("vehicleSelection");
+      if (vehicle.value === "None") {
+        alert("Please indicate your vehicle rental selection!");
+        return false;
+      }
+      return true;
+    }
+
+    function validateStartCity() {
+      const from = document.getElementById("from").value.trim();
+      if (from === "") {
+        alert("Please indicate the start city.");
+        return false;
+      }
+      return true;
+    }
+
+    function validateDestinationCity() {
+      const to = document.getElementById("to").value.trim();
+      if (to === "") {
+        alert("Please indicate the destination city.");
+        return false;
+      }
+      return true;
+    }
+
+    // Pickup Date
+    function validatePickupDay() {
+      const day = document.getElementById("day");
+      if (day.value === "None") {
+        alert("Please select a pickup day.");
+        return false;
+      }
+      return true;
+    }
+
+    function validatePickupMonth() {
+      const month = document.getElementById("month");
+      if (month.value === "None") {
+        alert("Please select a pickup month.");
+        return false;
+      }
+      return true;
+    }
+
+    function validatePickupYear() {
+      const year = document.getElementById("year");
+      if (year.value === "None") {
+        alert("Please select a pickup year.");
+        return false;
+      }
+      return true;
+    }
+
+    // Return Date
+    function validateReturnDay() {
+      const day = document.getElementById("returnDay");
+      if (day.value === "None") {
+        alert("Please select a return day.");
+        return false;
+      }
+      return true;
+    }
+
+    function validateReturnMonth() {
+      const month = document.getElementById("returnMonth");
+      if (month.value === "None") {
+        alert("Please select a return month.");
+        return false;
+      }
+      return true;
+    }
+
+    function validateReturnYear() {
+      const year = document.getElementById("returnYear");
+      if (year.value === "None") {
+        alert("Please select a return year.");
+        return false;
+      }
+      return true;
+    }
+
+    // Return Time
+    function validateReturnTime() {
+      const time = document.getElementById("returnTime").value.trim();
+      if (time === "") {
+        alert("Please indicate the time you would like to return the vehicle.");
+        return false;
+      }
+      return true;
+    }
+
+    // Validate Radio Buttons
+    function validateRadioButtons() {
+      const radios = document.getElementsByName("Yes");
+      let checked = false;
+      for (let r of radios) {
+        if (r.checked) checked = true;
+      }
+      if (!checked) {
+        alert("Please select one of the driver/insurance options.");
+        return false;
+      }
+      return true;
+    }
+
+    // Billing Info
+    function validateFirstName() {
+      const fname = document.getElementById("fname").value.trim();
+      if (fname === "") {
+        alert("Please enter your first name.");
+        return false;
+      }
+      return true;
+    }
+
+    function validateInitialMiddleName() {
+      const middle = document.getElementById("mInitial").value.trim();
+      if (middle === "") {
+        alert("Please enter your middle initial.");
+        return false;
+      }
+      return true;
+    }
+
+    function validateLastName() {
+      const lname = document.getElementById("lname").value.trim();
+      if (lname === "") {
+        alert("Please enter your last name.");
+        return false;
+      }
+      return true;
+    }
+
+    function validateAddress() {
+      const address = document.getElementById("address").value.trim();
+      if (address === "") {
+        alert("Please enter your address.");
+        return false;
+      }
+      return true;
+    }
+
+    function validateCity() {
+      const city = document.getElementById("city").value.trim();
+      if (city === "") {
+        alert("Please enter your city.");
+        return false;
+      }
+      return true;
+    }
+
+    function validateZipCode() {
+      const zip = document.getElementById("zip").value.trim();
+      if (zip === "") {
+        alert("Please enter your ZIP code.");
+        return false;
+      }
+      return true;
+    }
+
+    function validateTelephone() {
+      const phone = document.getElementById("telephone").value.trim();
+      if (phone === "") {
+        alert("Please enter your contact number.");
+        return false;
+      }
+      if (isNaN(phone)) {
+        alert("Phone number must be numeric.");
+        return false;
+      }
+      return true;
+    }
+
+    // Card Info
+    function validateCardNumber() {
+      const num = document.getElementById("cardNumber").value.trim();
+      if (num === "") {
+        alert("Please provide your card number!");
+        return false;
+      }
+      if (isNaN(num) || num.length < 13) {
+        alert("Invalid card number!");
+        return false;
+      }
+      return true;
+    }
+
+    function validateExpiryMonth() {
+      const month = document.getElementById("expiryMonth");
+      if (month.value === "None") {
+        alert("Please select expiry month.");
+        return false;
+      }
+      return true;
+    }
+
+    function validateExpiryYear() {
+      const year = document.getElementById("expiryYear");
+      if (year.value === "None") {
+        alert("Please select expiry year.");
+        return false;
+      }
+      return true;
+    }
+
+    function validateCardBrand() {
+      const brand = document.getElementById("cardBrand").value.trim();
+      if (brand === "") {
+        alert("Please enter your card brand name.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+
+<body>
+  <div id="pageHeader">
+    <div id="logo"><img src="images/logo.png" alt="Company Logo" /></div>
+    <div id="company-name"><h1>Selemani Car Rental Co</h1></div>
+  </div>
+
+  <div id="content">
+    <div class="welcome">
+      <p class="special">
+        Dear customer, welcome to Selemani Car Rental Co. To rent a car from us,
+        simply fill in the form below. Fields marked with an asterisk (*)
+        are <span class="mandatory">mandatory</span>.
+      </p>
+    </div>
+  </div>
+
+  <form name="carRental" id="carRental" method="post" onsubmit="return validateForm();">
+    <!-- keep all your existing form fields here (they’re fine) -->
+  </form>
+
+  <div id="footer">
+    <p>Copyright &copy; 2025: <span>Selemani Car Rental Co.</span> - All Rights Reserved!</p>
+  </div>
+</body>
+</html>
